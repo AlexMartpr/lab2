@@ -15,12 +15,11 @@ public class JoinAirportReducer extends Reducer<AirportWritableComparable, Text,
 
         float minDelay = Float.MAX_VALUE;
         float maxDelay = 0f;
-        float averageDelay = 0f;
         float summary = 0f;
         float count = 0f;
         Iterator<Text> iter = arg1.iterator();
         if (iter.hasNext()) {
-            String airportName = iter.next().toString();
+            Text airportName = new Text(iter.next().toString());
             while(iter.hasNext()) {
                 String delayString = iter.next().toString();
                 float delay = Float.parseFloat(delayString);
@@ -28,12 +27,12 @@ public class JoinAirportReducer extends Reducer<AirportWritableComparable, Text,
                 maxDelay = delay > maxDelay ? delay : maxDelay;
                 summary += delay;
                 count++;
-                averageDelay = summary / count;
+                float averageDelay = summary / count;
                 if (count > 0) {
                     String avDelay = "\nAverage Delay: " + averageDelay + " min\n";
                     String minimumDelay = "Min delay: " + minDelay + " min\n";
                     String maximumDelay = "Max delay: " + maxDelay + " min\n";
-                    arg2.write(new Text(airportName), new Text(avDelay + minimumDelay + maximumDelay));
+                    arg2.write(airportName, new Text(avDelay + minimumDelay + maximumDelay));
                 }
             }
         }
