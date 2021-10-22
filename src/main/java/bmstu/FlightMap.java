@@ -13,7 +13,7 @@ public class FlightMap extends Mapper<LongWritable, Text, AirportWritableCompara
 
     @Override
     protected void map(LongWritable key, Text value,
-            Mapper<LongWritable, Text, AirportWritableComparable, Text>.Context context)
+            Context context)
             throws IOException, InterruptedException {
         String[] cleatValues = value.toString().split(",");
         if (key.get() > 0) {
