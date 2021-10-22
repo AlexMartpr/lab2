@@ -33,8 +33,7 @@ public class JoinAirportReducer extends Reducer<AirportWritableComparable, Text,
                     String avDelay = "\nAverage Delay: " + averageDelay + " min\n";
                     String minimumDelay = "Min delay: " + minDelay + " min\n";
                     String maximumDelay = "Max delay: " + maxDelay + " min\n";
-                    Reducer<AirportWritableComparable, Text, Text, Text>.Context context = arg2;
-                    context.write(airportName, new Text(avDelay + minimumDelay + maximumDelay));
+                    arg2.write(new Text(airportName), new Text(avDelay + minimumDelay + maximumDelay));
                 }
             }
         }
