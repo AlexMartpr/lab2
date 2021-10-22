@@ -16,7 +16,7 @@ public class FlightMap extends Mapper<LongWritable, Text, AirportWritableCompara
             Mapper<LongWritable, Text, AirportWritableComparable, Text>.Context context)
             throws IOException, InterruptedException {
         String[] cleatValues = value.toString().split(",");
-        if (key.get() != 0) {
+        if (key.get() > 0) {
             String airportStringID = cleatValues[positionAirportID];
             int airportID = Integer.parseInt(airportStringID);
             String airportDelay = cleatValues[positionAirportDelay];
