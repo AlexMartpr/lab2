@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 public class AirportMap extends Mapper<LongWritable, Text, AirportWritableComparable, Text>{
     @Override
     protected void map(LongWritable key, Text value,
-            Context context)
+            Mapper<LongWritable, Text, AirportWritableComparable, Text>.Context context)
             throws IOException, InterruptedException {
                 String[] values = value.toString().split(",");
                 if(key.get() > 0) {
