@@ -17,9 +17,13 @@ public class FlightMap extends Mapper<LongWritable, Text, AirportWritableCompara
             throws IOException, InterruptedException {
         String[] cleatValues = value.toString().split(",");
         if (key.get() != 0) {
-            String airportStringID = cleatValues[14];
+            String airportStringID = cleatValues[positionAirportID];
             int airportID = Integer.parseInt(airportStringID);
-            String airportDelay = 
+            String airportDelay = cleatValues[positionAirportDelay];
+            boolean checkDelay = Float.parseFloat(airportDelay) > 0.f;
+            if (checkDelay && !airportDelay.isEmpty()) {
+                context.write(new AirportWritableComparable(airportID, 1), new Text(airportDelay));
+            }
         }
     }
 }
