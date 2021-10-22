@@ -20,7 +20,7 @@ public class FlightMap extends Mapper<LongWritable, Text, AirportWritableCompara
             String airportStringID = cleatValues[positionAirportID];
             int airportID = Integer.parseInt(airportStringID);
             String airportDelay = cleatValues[positionAirportDelay];
-            boolean checkDelay = Float.parseFloat(airportDelay) > 0.f;
+            boolean checkDelay = Float.parseFloat(airportDelay) > 0f;
             if (checkDelay && !airportDelay.isEmpty()) {
                 context.write(new AirportWritableComparable(airportID, 1), new Text(airportDelay));
             }
