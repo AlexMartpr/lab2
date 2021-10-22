@@ -8,8 +8,8 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 public class FlightMap extends Mapper<LongWritable, Text, AirportWritableComparable, Text> {
     
-    private final int positionAirportID = 14;
-    private final int positionAirportDelay = 18;
+    private static final int positionAirportID = 14;
+    private static final int positionAirportDelay = 18;
 
     @Override
     protected void map(LongWritable key, Text value,
