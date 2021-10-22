@@ -10,7 +10,7 @@ public class JoinAirportReducer extends Reducer<AirportWritableComparable, Text,
     
     @Override
     protected void reduce(AirportWritableComparable arg0, Iterable<Text> arg1,
-            Reducer<AirportWritableComparable, Text, Text, Text>.Context arg2)
+            Context arg2)
             throws IOException, InterruptedException {
 
         float minDelay = Float.MAX_VALUE;
