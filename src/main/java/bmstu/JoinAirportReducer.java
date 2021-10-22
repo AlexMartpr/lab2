@@ -23,7 +23,12 @@ public class JoinAirportReducer extends Reducer<AirportWritableComparable, Text,
         Iterator<Text> iter = arg1.iterator();
         if (iter.hasNext()) {
             String airportName = iter.next().toString();
-            while()
+            while(iter.hasNext()) {
+                String delayString = iter.next().toString();
+                float delay = Float.parseFloat(delayString);
+                summary += delay;
+                count++;
+            }
         }
     }
 
