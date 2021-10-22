@@ -12,7 +12,7 @@ public class AirportMap extends Mapper<LongWritable, Text, AirportWritableCompar
             Mapper<LongWritable, Text, AirportWritableComparable, Text>.Context context)
             throws IOException, InterruptedException {
                 String[] airport = value.toString().split("\",\"");
-                if(key.get()!=0) {
+                if(key.get() > 0) {
                     String clearStringAirportID = airport[0].replaceAll("\"", "");
                     int airportID = Integer.parseInt(clearStringAirportID);
                     String airportName = airport[1].replaceAll("\"", "");
